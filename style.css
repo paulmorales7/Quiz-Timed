@@ -1,56 +1,71 @@
-/* *, *::before. *::after{
-    box-sizing: border-box;
-    font-family: sans-serif;
-} */
+:root{
+    background-color: teal;
+}
 
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 0;
-    margin: 0;
+.container{
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    width: 100;
-    height: 100;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+
 }
 
-.card{
-    background-color: yellow;
-    border: 1px solid black;
-    margin-top: 100px;
+.flex-column{
+    display: flex;
+    flex-direction: column;
 }
 
-.card-title{
-    font-size: 24px;
-    text-align: center;
+.flex-center{
+    align-items: center;
+    justify-content: center;
 }
-
-.card-text{
-    font-style: italic;
-    text-align: center;
-}
-
-#answer-buttons{
-    display: grid;
-    gap: 5px;
-    margin: 20px;
+.hidden{
     display: none;
 }
 
 .btn{
-    background-color: black;
-    color: whitesmoke;
-
+    padding: 1rem;
+    width: 70px;
+    text-align: center;
+    background-color: orange;
+    color: black;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border: 1px solid black;
+    font-weight: bold;
 }
 
-.btn-start{
-    background-color: black;
-    color: whitesmoke;
-  
+.btn:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 whitesmoke;
+    transform: translateY(-1px);
 }
 
-.quiz-startbutton{
+.choice-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    border: 0.1rem solid black;
+    background-color: orange;
 }
+
+.choice-container:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 whitesmoke;
+    transform: translateY(-1px);
+    transition: transform 150ms;
+}
+.choice-prefix{
+    padding: 2rem 1rem;
+    background-color: black;
+    color: whitesmoke;
+    
+}
+
+.choice-text{
+    padding: 1.5rem;
+}
+
