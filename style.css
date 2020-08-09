@@ -1,0 +1,56 @@
+/* *, *::before. *::after{
+    box-sizing: border-box;
+    font-family: sans-serif;
+} */
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100;
+    height: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    background-color: yellow;
+    border: 1px solid black;
+    margin-top: 100px;
+}
+
+.card-title{
+    font-size: 24px;
+    text-align: center;
+}
+
+.card-text{
+    font-style: italic;
+    text-align: center;
+}
+
+#answer-buttons{
+    display: grid;
+    gap: 5px;
+    margin: 20px;
+    display: none;
+}
+
+.btn{
+    background-color: black;
+    color: whitesmoke;
+
+}
+
+.btn-start{
+    background-color: black;
+    color: whitesmoke;
+  
+}
+
+.quiz-startbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
