@@ -1,9 +1,11 @@
 const question = document.getElementById("question");
-console.log(question);
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById("questionCounter");
+const timeEl = document.getElementById("Time");
+
 
 let currentQuestion = {};
-let acceptingAnswers = true;
+let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
@@ -55,7 +57,7 @@ let questions = [
     }
 
 ];
-console.log(questions);
+
 const maxQuestions = 5;
 
 function startGame() {
@@ -65,14 +67,62 @@ function startGame() {
 
     getNewQuestion();
 };
-console.log(currentQuestion)
+
 function getNewQuestion() {
+    if (availableQuestions.length === 0 || questionCounter >= maxQuestions) {
+        localStorage.setItem("mostRecentScore", score);
+        return window.location.assign("endpage.html")
+    }
     questionCounter++;
+    questionCounterText.innerText = questionCounter + "/" + maxQuestions;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
 
     question.innerText = currentQuestion.question;
 
-}
+    choices.forEach(function (choice) {
+        const number = choice.dataset["number"];
+        choice.innerText = currentQuestion["choice" + number];
+    });
+
+    availableQuestions.splice(questionIndex, 1);
+
+    acceptingAnswers = true;
+};
+
+choices.forEach(function (choice) {
+    choice.addEventListener("click", function (e) {
+        if (!acceptingAnswers)
+            return;
+
+        acceptingAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset["number"];
+
+        const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+
+        selectedChoice.parentElement.classList.add(classToApply);
+
+
+        getNewQuestion();
+    });
+});
+
 
 startGame();
+
+const userName = document.getElementsById("username")
+const submitScoreBtn = document.getElementsById("submitScorebtn");
+const mostRecentScore = localStorage.getItem("mostRecentScore");
+const finalScore = document.getElementsById("finalScore");
+
+finalScore.innerText = mostRecentScore;
+
+userName.addEventListener("keyup", function () {
+    console.log(userName.value);
+})
+
+function submitHighScore(e) {
+    console.log("clicked the save button");
+    e.preventDefault();
+}
